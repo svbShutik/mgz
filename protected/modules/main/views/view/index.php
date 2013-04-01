@@ -1,21 +1,24 @@
 <div class="row-fluid">
     <div class="span9">
-        <div class="hero-unit">
+        <div class="well">
             <legend></legeng><h2><?php echo $model->title ; ?></h2></legend>
             <p><strong>Цена: </strong><?php echo $model->price ;?> руб.</p>
             <p><strong>Кол-во на складе: </strong><?php echo $model->quantity ;?> шт.</p>
             <p><strong>Описание: </strong><?php echo $model->desc ;?></p>
 
                 <div class="row-fluid">
-                <div class="span6">
-                    <div class="input-prepend input-append" style="padding-top: 7px ;">
+                <div class="span3">
+                    <div class="input-prepend input-append">
                         <span class="add-on">Кол-во:</span>
                         <?php echo CHtml::tag('input', array('type'=>'number', 'value'=>'1', 'name'=>'productCount', 'class'=>'input-mini', 'id'=>'productCount')) ;?>
                         <span class="add-on">шт.</span>
                     </div>
                 </div>
-                <div class="span6">
-                    <?php echo CHtml::link("КУПИТЬ", array('#'), array('id'=>$model->id, 'class'=>'btn btn-large btn-info', 'rel'=>'popover')) ;?>
+                <div class="span4">
+                    <div class="btn-group">
+                        <?php echo CHtml::link("В корзину", array('#'), array('id'=>$model->id, 'class'=>'btn btn-info', 'rel'=>'popover')) ;?>
+                        <?php echo CHtml::link("Купить за 1 клик", '#', array('id'=>$model->id, 'class'=>'btn btn-warning', 'rel'=>'buy1click')) ;?>
+                    </div>
                 </div>
 
                 </div>
