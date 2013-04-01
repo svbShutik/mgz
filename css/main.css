@@ -1,0 +1,304 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0 auto;
+    max-width: 1024px;
+}
+
+.page {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+}
+
+.wrp {
+    padding-bottom: 100px;
+}
+
+.footer {
+    border-top: 1px solid #949494;
+    height: 100px;
+    margin-top: -100px;
+
+    font-size: 1.1em;
+    color: #949494;
+}
+
+.footer_copy {
+    padding-top: 30px;
+    text-align: center ;
+}
+
+/* Custom container */
+.container-narrow {
+
+}
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+.sign_up_center {
+    text-align: center;
+}
+
+
+.profile_edit {
+    padding-bottom: 35px;
+}
+
+.profile_edit a {
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.profile_edit a:hover {
+    text-decoration: none ;
+}
+
+ul.img_container {
+    margin: 0;
+    padding: 4px;
+}
+
+ul.img_container li {
+    display: inline;
+    margin-right: 5px;
+    padding: 3px;
+}
+
+/*
+MAIN MODULE
+*/
+.top-padding {
+    padding: 17px 0 0 47px ;
+}
+
+#cart-block a {
+    color: #5B5B5B;
+}
+
+#cart-block strong {
+    color: #3288A2 ;
+}
+#cart-block span {
+    font-weight: normal;
+}
+
+#cart-block i {
+    color: #5B5B5B;
+    font-size: 32px;
+}
+
+#cart-block .cart {
+    padding-top: 20px;
+}
+
+#user-block {
+    padding-top: 9px;
+}
+
+#user-block a {
+    color: #5B5B5B;
+}
+
+#user-block a:hover {
+    text-decoration: none;
+    color: #5B5B5B;
+}
+
+#user-block i {
+    font-size: 21px;
+}
+
+
+
+
+
+
+.catalog {
+    border: 1px solid #5bc0de ;
+    padding: 0px 0px 0px 0px;
+    margin-bottom: 4px;
+}
+
+.catalog p {
+    padding: 14px 10px 10px 15px ;
+    background-color: #fbb450 ;
+    margin: 0px;
+    margin-bottom: 5px;
+
+}
+
+.back {
+    padding-left: 14px;
+}
+
+.catalog-list {
+    padding: 5px;
+    border-bottom: 14px solid #fbb450 ;
+}
+
+.catalog-list li {
+    padding: 5px 0 0 20px;
+    border-bottom: 1px dotted #808080 ;
+}
+
+.catalog-list li:hover {
+    background-color: #5bc0de;
+}
+
+.catalog-list li a {
+    color: #5B5B5B ;
+    font-size: 13px;
+}
+.catalog-list li a:hover {
+    text-decoration: none ;
+}
+
+.product-list {
+    display: block ;
+}
+
+
+
+.product-list .span6 {
+    margin-left: 0px;
+    padding-bottom: 15px;
+}
+
+.img {
+    padding-right: 5px;
+    display: block;
+    height: 110px;
+}
+
+.imgCart {
+    padding-right: 5px;
+    width: 110px;
+    height: 110px;
+    float: left;
+}
+
+.product-list .span6 img {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    max-height: 110px;
+
+}
+.name {
+    font-family: Tahoma;
+    font-size: 14px;
+    color: #4A4A4A;
+    font-weight: bold;
+    margin: 15px 0 0 5px;
+}
+
+.product-list .span6 .price {
+    color: #E27C0E;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.delete a {
+    font-size: 18px;
+    color: #cd0a0a;
+}
+
+#arrupmain {
+    background: url("/img/arrupmain.png") no-repeat scroll center 6px #E27C0E;
+    border-radius: 5px 5px 5px 5px;
+    bottom: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 10px;
+    padding: 26px 5px 2px;
+    position: fixed;
+    right: 20px;
+    display: none;
+    z-index: 10000;
+}
+
+#arrupmain.showing {
+    display: block;
+}
+
+#cartContainer {
+    width: 100%;
+    position: relative;
+}
+
+.cartTips {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #3fb1c3;
+    border-radius: 3px 3px 3px 3px;
+    display: none;
+    max-width: 280px;
+    padding: 0;
+    position: absolute;
+    width: 280px;
+    z-index: 20;
+}
+
+.cartTips.popoverbottom {
+    display: block;
+    margin-top: 10px;
+    overflow: visible;
+    position: relative;
+    width: auto;
+}
+
+.cartTips td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.attribute {
+
+}
+
+.attribute td {
+    padding-left: 15px;
+}
+
+.deliveryDesc {
+    padding-top: 0;
+    padding-left: 20px;
+    padding-bottom: 15px;
+}
+
+#cartContainer:hover .cartTips {
+    display: block;
+}
+
+.loader
+{
+    background: url("/img/ajax-loader.gif") no-repeat scroll 50% 0 #FFFFFF;
+    height: 32px;
+    width: 100%;
+    position: relative;
+    text-indent: -10000px;
+    font-size: 0px;
+    color:#fff;
+}
+
+.red {
+    color: red;
+    display: inline;
+}
+
+.green {
+    color: green;
+    display: inline;
+}
+
+.caption {
+    display: none;
+}
+
+@media print {
+    .print_hide{
+        display:none;
+    }
+}
