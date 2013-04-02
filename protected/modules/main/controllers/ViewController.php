@@ -28,6 +28,21 @@ class ViewController extends Controller
                         if (!(e.which>47 && e.which<58)) return false;
                     });
                     });
+
+                    $("#buy1click").click(function(){
+                        if(!$("#phoneNumber").val().length) {
+                            if(!$("#delete_msg").length)
+                                $("#phoneNumber").after("<p class=\"text-error\" id=\"delete_msg\"><small>Введите номер телефона</small></p>") ;
+                        } else {
+                            if($("#delete_msg").length) {
+                                $("#delete_msg").remove() ;
+                            }
+                        }
+
+
+                    }) ;
+
+
         ',
             CClientScript::POS_READY
         ) ;

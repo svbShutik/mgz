@@ -1,3 +1,4 @@
+<?php /* @var $this Controller */ ?>
 <div class="row-fluid">
     <div class="span9">
         <div class="well">
@@ -22,11 +23,18 @@
                             <h4 id="myModalLabel">Обратный звонок</h4>
                         </div>
                         <div class="modal-body">
-                            <p>One fine body…</p>
+                            <div class="span4">
+                                <?php echo CHtml::image("/img/callBack.jpg", "Обратный звонок", array('style'=>'width: 350px;')) ;?>
+                            </div>
+                            <div class="span8">
+                                <p>Пожалуйста, укажите Ваш контактный номер телефона, и мы свяжемся с Вами в ближайшее время:</p>
+                                <?php echo CHtml::textField('phone', '', array('class'=>'span6','id'=>'phoneNumber', 'placeholder'=>'Ваш номер телефона')) ;?>
+                                <small><p class="muted">Например: +7 924 000 0000</p></small>
+                            </div>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                            <button class="btn btn-primary">Save changes</button>
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
+                            <button class="btn btn-info" id="buy1click">Жду звонка :)</button>
                         </div>
                     </div>
 
@@ -67,7 +75,7 @@
             foreach($imgList as $img) {
                 echo "<li class='span12'>";
                 echo "<div class='thumbnail'>";
-                echo CHtml::image(ProductImg::PRODUCT_IMG_DIR.$model->id."/".$img['img_file'], '', array());
+                echo CHtml::link(CHtml::image(ProductImg::PRODUCT_IMG_DIR.$model->id."/".$img['img_file'], $model->title, array()), ProductImg::PRODUCT_IMG_DIR.$model->id."/".$img['img_file'], array('rel'=>'lightbox-items', 'title'=>$model->title)) ;
                 echo "</div>";
                 echo "</li>";
             }
