@@ -1,7 +1,7 @@
 <div class="row-fluid">
     <div class="span9">
         <div class="well">
-            <legend></legeng><h2><?php echo $model->title ; ?></h2></legend>
+            <h2><?php echo CHtml::encode($model->title) ;?></h2><hr>
             <p><strong>Цена: </strong><?php echo $model->price ;?> руб.</p>
             <p><strong>Кол-во на складе: </strong><?php echo $model->quantity ;?> шт.</p>
             <p><strong>Описание: </strong><?php echo $model->desc ;?></p>
@@ -15,10 +15,27 @@
                     </div>
                 </div>
                 <div class="span4">
-                    <div class="btn-group">
-                        <?php echo CHtml::link("В корзину", array('#'), array('id'=>$model->id, 'class'=>'btn btn-info', 'rel'=>'popover')) ;?>
-                        <?php echo CHtml::link("Купить за 1 клик", '#', array('id'=>$model->id, 'class'=>'btn btn-warning', 'rel'=>'buy1click')) ;?>
+
+                    <div class="modal fade" id="callBack" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 id="myModalLabel">Обратный звонок</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>One fine body…</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                            <button class="btn btn-primary">Save changes</button>
+                        </div>
                     </div>
+
+                    <div class="btn-group">
+                        <?php echo CHtml::link("В корзину", '#', array('id'=>$model->id, 'class'=>'btn btn-info', 'rel'=>'popover')) ;?>
+                        <?php echo CHtml::link("Купить за 1 клик", '#callBack', array('id'=>$model->id, 'class'=>'btn btn-warning', "data-toggle"=>"modal")) ;?>
+                    </div>
+
+
                 </div>
 
                 </div>
@@ -66,4 +83,7 @@
         }
         ?>
     </div>
+
+
+
 </div>

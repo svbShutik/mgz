@@ -71,14 +71,12 @@ if(isset($data)) {
     echo "</table>";
         echo "<div class='alert alert-info'>Общая стоимость, без учета доставки: <strong>".Yii::app()->shoppingCart->getCost()." руб.</strong></div>" ;
     echo "</div>" ;
-    echo CHtml::link("Очистить корзину", $this->createUrl("/main/cart/clear",array("clear"=>'on')), array("class"=>"btn")) ;
+    echo CHtml::link("<i class='icon2-phone'></i>Купить за 1 клик", '#', array("class"=>"btn btn-warning", "rel"=>"buy1click")) ;
 }
 ?>
 <?php if(Yii::app()->shoppingCart->getItemsCount()):?>
 <div class="pull-right">
-    <?php
-        echo CHtml::link('Оформить заказ', array('/main/cart/createorder'), array('class'=>'btn btn-success')) ;
-    ?>
+    <?php echo CHtml::link("<i class='icon2-cart-2'></i>Оформить заказ", array('/main/cart/createorder'), array('class'=>'btn btn-success')) ; ?>
 </div>
 <div class="top-padding"></div>
 <?php endif ; ?>
