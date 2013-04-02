@@ -21,6 +21,14 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 <h4 id="myModalLabel">Обратный звонок</h4>
+                    <div class="modal fade" id="callBack" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 id="myModalLabel">Обратный звонок</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="span4">
+                                <?php echo CHtml::image("/img/callBack.jpg", "Обратный звонок", array('style'=>'width: 350px;')) ;?>
                             </div>
                             <div class="modal-body">
                                 <div class="span4">
