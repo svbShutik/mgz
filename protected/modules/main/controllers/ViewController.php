@@ -37,12 +37,10 @@ class ViewController extends Controller
                             if($("#delete_msg").length) {
                                 $("#delete_msg").remove() ;
                             }
+                            $("#callBack").modal("hide") ;
                         }
 
-
                     }) ;
-
-
         ',
             CClientScript::POS_READY
         ) ;
