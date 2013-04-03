@@ -28,8 +28,11 @@
                             </div>
                             <div class="span8">
                                 <p>Пожалуйста, укажите Ваш контактный номер телефона, и мы свяжемся с Вами в ближайшее время:</p>
-                                <?php echo CHtml::textField('phone', '', array('class'=>'span6','id'=>'phoneNumber', 'placeholder'=>'Ваш номер телефона')) ;?>
+                                <?php echo CHtml::textField('phoneNumber', '', array('class'=>'span6','id'=>'phoneNumber', 'placeholder'=>'Ваш номер телефона')) ;?>
                                 <small><p class="muted">Например: +7 924 000 0000</p></small>
+                                <p>Также можете указать, в какое время удобнее позвонить Вам (желательно указывать московское время):</p>
+                                <?php echo CHtml::textField('callTIme', '', array('class'=>'span6','id'=>'callTime', 'placeholder'=>'Как можно раньше :)')) ;?>
+                                <small><p class="muted">Например: с 9 до 20 по МСК</p></small>
                             </div>
                         </div>
                         <div class="modal-footer">

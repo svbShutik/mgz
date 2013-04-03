@@ -79,7 +79,7 @@ class CartController extends Controller
     }
 
     public function actionGuestorder() {
-        $model = new GuestOrder() ;
+   /*     $model = new GuestOrder() ;
 
         if(isset($_POST['GuestOrder']))
         {
@@ -91,7 +91,7 @@ class CartController extends Controller
             }
         }
 
-        $this->render('guest_order', array('model'=>$model)) ;
+        $this->render('guest_order', array('model'=>$model)) ;*/
     }
 
 

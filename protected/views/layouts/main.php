@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/icon_metro.css" />
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/slimbox2.css" />
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/alertify.core.css" />
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/alertify.default.css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -93,6 +95,7 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap-tooltip.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap-popover.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/slimbox2.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/alertify.min.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/application.js"></script>
 
 </body>
