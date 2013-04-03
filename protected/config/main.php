@@ -102,7 +102,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=magazin',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '313379',
+			'password' => '',
 			'charset' => 'utf8',
 			'tablePrefix' => 'tbl_',
 
