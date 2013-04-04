@@ -14,7 +14,7 @@
         ?>
 
     </div>
-    <div class="span10">
+    <div class="span11">
         <div class="well">
             <?php echo $this->renderPartial('_form', array('model'=>$model)) ; ?>
         </div>    <!-- well -->

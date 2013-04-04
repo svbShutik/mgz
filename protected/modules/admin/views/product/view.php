@@ -2,13 +2,6 @@
 /* @var $this ProductController */
 /* @var $model Product */
 ?>
-
-
-
-
-
-
-
 <legend>Просмотр продукта</legend>
 
 <div class="row-fluid">

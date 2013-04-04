@@ -4,9 +4,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="ru" />
 
-	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/icon_metro.css" />
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/slimbox2.css" />
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/alertify.core.css" />
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/alertify.default.css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -22,8 +26,6 @@
                 <ul class="nav">
                     <li><?php echo CHtml::link("Gii", array("/gii")) ;?></li>
                     <li><?php echo CHtml::link("Админка", array("/admin/index")) ;?></li>
-                    <li><a href="#">О сервисе</a></li>
-                    <li><a href="#">Связаться с нами</a></li>
                 </ul>
                 <div class="pull-right">
                     <?php
@@ -40,14 +42,19 @@
             </div>
         </div>
     </div>
-
-        <?php echo $content; ?>
-
+        <div class="row-fluid">
+            <div class="span2">
+                123
+            </div>
+            <div class="span10">
+                <?php echo $content; ?>
+            </div>
+        </div>
     </div>
 </div>
 <div class="footer">
     <div class="footer_copy">
-        <p>&copy; Павел Петроf, 2012</p>
+        <p>&copy; Павел Петроf, 2013</p>
     </div>
 </div>
 <!---
@@ -55,6 +62,9 @@
 -->
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap-tooltip.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap-popover.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/slimbox2.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/alertify.min.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/application.js"></script>
 
 </body>

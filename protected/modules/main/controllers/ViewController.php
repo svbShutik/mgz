@@ -2,10 +2,8 @@
 
 class ViewController extends Controller
 {
-   //public $layout = '//layouts/column2' ;
     public function actionIndex()
     {
-        //Данные о товаре
         $model = Product::model()->loadmodel($_GET['numiid']) ;
 
         Yii::app()->clientScript->registerScript(
@@ -40,11 +38,6 @@ class ViewController extends Controller
                                 $("#delete_msg").remove() ;
                             }
 
-
-
-                            // тут отправляем данные на сервер
-
-
                             $.ajax({
                                 url: "'.$this->createUrl("/main/buy/buy1click").'",
                                 type: "POST",
@@ -61,22 +54,12 @@ class ViewController extends Controller
                                     $("#callBack").modal("hide") ;
                                     alertify.success("<i class=\"icon2-smiley\"></i> В ближайшее время с Вами свяжется наш менеджер для уточнения заказа!", 0);
                                 }
-
                             }) ;
-
-
-
-
-
-
                         }
-
                     }) ;
         ',
             CClientScript::POS_READY
         ) ;
-
-
 
         $this->pageTitle =Yii::app()->name.": ".$model->title." - ".$model->price." руб." ;
         $this->pageDescription = $model->desc ;

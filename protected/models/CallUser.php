@@ -67,7 +67,7 @@ class CallUser extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'phone' => 'Телефон',
-			'items' => 'Заказ',
+			'items' => 'ID заказанных товаров',
 			'call_time' => 'Время звонка',
 			'create_time' => 'Время запроса',
 		);
