@@ -2,9 +2,8 @@
 
 class DefaultController extends Controller
 {
-//$this->layout='/layouts/main';
     public $layout = '//layouts/column2' ;
-    public $catalog_menu = array() ;
+    //public $catalog_menu = array() ;
 
     public function actionIndex()
     {
@@ -15,7 +14,7 @@ class DefaultController extends Controller
         if(isset($_GET['cid'])) {
             // находимся в какой то категории
             $root = Category::model()->loadModel($_GET['cid']) ;
-            $model = $root->children()->findAll() ; // список подкатегорий в текущей категории
+            $catalog_menu = $root->children()->findAll() ; // список подкатегорий в текущей категории
 
             $descendants = $root->descendants()->findAll() ; // Выбираем ВСЕХ потомков категории
             $node_id[] = $_GET['cid'] ;
@@ -25,21 +24,15 @@ class DefaultController extends Controller
             // список продуктов в текущей категории, и подкатегориях c первыми (sort=1) картинками
             $count = Yii::app()->db->createCommand('SELECT COUNT(*) FROM product WHERE category_id IN ('.implode(",", $node_id).')')->queryScalar() ; // определяем сколько всего товаров в категории и подкатегориях
 
-            $sql = "SELECT DISTINCT p.*, i.img_file
-                    FROM (SELECT DISTINCT p.* FROM product p WHERE p.category_id IN (".implode(',',$node_id).")) p
-                    LEFT JOIN (SELECT DISTINCT i.product_id, i.img_file FROM product_img i WHERE i.sort=1) i ON p.id = i.product_id
-                    WHERE p.active=1" ;
+            $sql = "SELECT * FROM product WHERE category_id IN (".implode(',',$node_id).") AND active =1" ;
 
         } else {
             // список всех активных продуктов c первыми (sort=1) картинками
             $count = Yii::app()->db->createCommand('SELECT COUNT(*) FROM product WHERE active=1')->queryScalar() ; // определяем сколько всего товаров в категории и подкатегориях
 
-            $sql = "SELECT DISTINCT p.*, i.img_file
-                    FROM product p
-                    LEFT JOIN (SELECT DISTINCT i.product_id, i.img_file FROM product_img i WHERE i.sort=1) i ON p.id = i.product_id
-                    WHERE p.active=1" ;
+            $sql = "SELECT * FROM product WHERE active=1" ;
 
-            $model = Category::model()->roots()->findAll() ;
+            $catalog_menu = Category::model()->roots()->findAll() ;
         }
 
         $dataProvider = new CSqlDataProvider($sql, array(
@@ -74,8 +67,7 @@ class DefaultController extends Controller
             CClientScript::POS_READY
         ) ;
 
-
-        $this->render('index', array('data'=>$model, 'items'=>$dataProvider, 'pages'=>$pages));
+        $this->render('index', array('catalog_menu'=>$catalog_menu, 'items'=>$dataProvider, 'pages'=>$pages));
     }
 
 

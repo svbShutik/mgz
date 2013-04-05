@@ -21,7 +21,7 @@
             <div class="top-padding"></div>
             <div class="row-fluid">
                 <div class="span2 logo">
-                    <?php echo CHtml::link("<img src='/img/logo.jpg'>", array("/main/default"), array('id'=>'logo', 'class'=>'logo')) ; ?>
+                    <?php echo CHtml::link(CHtml::image('/img/logo.jpg','SvbShop - магазин очешуительных товаров по низкой цене'), array("/main/default"), array('id'=>'logo', 'class'=>'logo')) ; ?>
 
                 </div>
                 <div class="span4 offset6">
@@ -57,24 +57,19 @@
                         <li><?=CHtml::link('На главную', array('/main/default')) ; ?></li>
                         <li class="divider-vertical"></li>
                         <li><a href="#">Новые товары</a></li>
-                        <li><a href="#">Специальные предложения</a></li>
                         <li><a href="#">Доставка</a></li>
+                        <li><a href="#">О нас</a></li>
                     </ul>
 
-                    <div class="pull-right">
-                        <ul class="nav">
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">О нас</a></li>
-                            <?php
-                            if(Yii::app()->user->isAdmin()) {
-                                echo "<li>".CHtml::link("Admin", array("/admin/index"))."<li>" ;
-                            }
-                            ?>
-                        </ul>
-                    </div>
+                    <?php $this->widget('SearchBlock'); ?>
+
                 </div>
             </div>
         </div>
+        <?php
+        /*$this->widget('SearchBlock', array(
+        ));*/
+        ?>
 
         <?php echo $content; ?>
 

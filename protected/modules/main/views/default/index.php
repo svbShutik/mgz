@@ -1,6 +1,6 @@
 <?php
 /* @var $this DefaultController */
-$this->catalog_menu = $data ;
+$this->catalog_menu = $catalog_menu ;
 ?>
 
 <div class="row-fluid">

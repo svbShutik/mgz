@@ -9,6 +9,10 @@
                             'data'=>$this->catalog_menu,
                         ));
                     echo "</div>";
+
+                    if(Yii::app()->user->isAdmin()) {
+                        echo CHtml::link("Admin", array("/admin/index"), array('class'=>'btn btn-danger btn-block')) ;
+                    }
                 }
                 ?>
     </div>

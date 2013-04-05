@@ -2,7 +2,9 @@
 class catalog_menu extends CWidget {
 
 	public $data ;
-	
+
+
+    //TODO: Пофиксить раздел каталога, при самом глубоком "вхождении" )) не отображается
 	public function run(){
         $params = array() ;
         if(isset($_GET['cid'])) {
