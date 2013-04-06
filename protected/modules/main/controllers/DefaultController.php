@@ -21,13 +21,13 @@ class DefaultController extends Controller
             foreach($descendants as $node) {
                 $node_id[] = $node->id ;
             }
-            // список продуктов в текущей категории, и подкатегориях c первыми (sort=1) картинками
+            // список продуктов в текущей категории, и подкатегориях
             $count = Yii::app()->db->createCommand('SELECT COUNT(*) FROM product WHERE category_id IN ('.implode(",", $node_id).')')->queryScalar() ; // определяем сколько всего товаров в категории и подкатегориях
 
             $sql = "SELECT * FROM product WHERE category_id IN (".implode(',',$node_id).") AND active =1" ;
 
         } else {
-            // список всех активных продуктов c первыми (sort=1) картинками
+            // список всех активных продуктов
             $count = Yii::app()->db->createCommand('SELECT COUNT(*) FROM product WHERE active=1')->queryScalar() ; // определяем сколько всего товаров в категории и подкатегориях
 
             $sql = "SELECT * FROM product WHERE active=1" ;
@@ -44,7 +44,6 @@ class DefaultController extends Controller
 
         $pages = new CPagination($count);
         $pages->pageSize = 30;
-
 
         Yii::app()->clientScript->registerScript(
             'ProductInCart',
@@ -69,7 +68,4 @@ class DefaultController extends Controller
 
         $this->render('index', array('catalog_menu'=>$catalog_menu, 'items'=>$dataProvider, 'pages'=>$pages));
     }
-
-
-
 }

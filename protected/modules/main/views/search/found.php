@@ -1,7 +1,7 @@
 <?php if(!empty($search->string)): ?>
-<div class="well well-small">
+<div class="alert alert-info">
     <p>Результаты поиска "<strong style="color: #679a06;"><?php echo CHtml::encode($search->string); ?>"</strong></p>
-    <p>Всего найдено: <?php echo count($products); ?></p>
+    <p>Всего найдено: <?php echo $pages->itemCount; ?></p>
 </div>
 <?php endif; ?>
 

@@ -10,9 +10,10 @@ class SearchController extends Controller
 
         if(isset($_POST['SiteSearchForm'])) {
             $search->attributes = $_POST['SiteSearchForm'];
-            $_GET['searchString'] = $search->string;
+            $_GET['q'] = $search->string;
+            $this->redirect(array('/main/search/search', 'q'=>$search->string)) ;
         } else {
-            $search->string = $_GET['searchString'];
+            $search->string = $_GET['q'];
         }
 
         $criteria = new CDbCriteria(array(
@@ -29,6 +30,7 @@ class SearchController extends Controller
         $pages->applyLimit($criteria);
 
         $products = Product::model()->findAll($criteria);
+        $this->pageTitle = Yii::app()->name . " - результаты поиска: ".$search->string ;
 
         $this->render('found',array(
             'products' => $products,
