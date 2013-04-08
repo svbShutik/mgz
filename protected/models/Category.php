@@ -145,4 +145,20 @@ class Category extends CActiveRecord
         return $model ;
     }
 
+    public function getBreadcrumbs($model){
+        $parents = $model->ancestors()->findAll() ;
+        foreach($parents as $parent) {
+            $bread_array[] = array(
+                'title'=>$parent->title,
+                'id'=>$parent->id,
+            ) ;
+        }
+
+        $bread_array[] = array(
+            'title'=>$model->title,
+            'id'=>$model->id,
+        );
+        return $bread_array ;
+    }
+
 }

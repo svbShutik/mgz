@@ -73,7 +73,12 @@ class ViewController extends Controller
         //Аттрибуты товара
         $attr = AttributeValue::model()->getAttributeValueList($model->id) ;
 
-        $this->render('index', array('model'=>$model, 'imgList'=>$imgList, 'attr'=>$attr)) ;
+
+        $bread_array = Category::model()->getBreadcrumbs(Category::model()->loadModel($model->category_id)) ;
+
+
+
+        $this->render('index', array('model'=>$model, 'imgList'=>$imgList, 'attr'=>$attr, 'bread_array'=>$bread_array)) ;
     }
 
 }

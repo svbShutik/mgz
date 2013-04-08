@@ -2,12 +2,7 @@
 /* @var $this DefaultController */
 /* @var $model Category */
 
-$bread_array[] = array(
-    'title'=> '<strong>Главный каталог</strong>',
-    'id'=>'',
-) ;
-
-if(isset($_GET['id'])) {
+/*if(isset($_GET['id'])) {
     $breadcrumb = $this->loadModel($_GET['id']) ;
     $parents = $breadcrumb->ancestors()->findAll() ; // Получаем всех родителей категории
     foreach($parents as $parent) { // добавляем их в массив
@@ -20,26 +15,36 @@ if(isset($_GET['id'])) {
         'title'=>$breadcrumb->title,
         'id'=>$breadcrumb->id,
     ) ;
-}
+}*/
 ?>
 
 <ul class="breadcrumb">
     <?php
-    foreach($bread_array as $items) {
-        $link = array('/admin/category') ;
-        if($items['id'] != '') {
-            $link += array('id'=>$items['id']) ;
-        }
+    if(isset($bread_array)){
+        echo "<li>" ;
+            echo  CHtml::link('Главный каталог',array('/admin/category'))."<span class='divider'>/</span>";
+        echo "</li>" ;
 
-        if(isset($_GET['id']) and $_GET['id']==$items['id']) {
-            echo "<li class='active'>" ;
-                echo $items['title'] ;
-            echo "</li>" ;
-        } else {
-            echo "<li>" ;
+        foreach($bread_array as $items) {
+            $link = array('/admin/category') ;
+            if($items['id'] != '') {
+                $link += array('id'=>$items['id']) ;
+            }
+
+            if(isset($_GET['id']) and $_GET['id']==$items['id']) {
+                echo "<li class='active'>" ;
+                    echo $items['title'] ;
+                echo "</li>" ;
+            } else {
+                echo "<li>" ;
                 echo  CHtml::link($items['title'],$link)."<span class='divider'>/</span>";
-            echo "</li>" ;
+                echo "</li>" ;
+            }
         }
+    } else {
+        echo "<li class='active'>" ;
+            echo  CHtml::link('Главный каталог',array('/admin/category'))."<span class='divider'>/</span>";
+        echo "</li>" ;
     }
     ?>
 </ul>

@@ -18,6 +18,7 @@ class CategoryController extends Controller
         if($id != 0) {
             // находимся в какой то категории
             $root = $this->loadModel($id) ;
+            $bread_array = Category::model()->getBreadcrumbs($root) ;
             $model = $root->children()->findAll() ; // список подкатегорий в текущей категории
 
             $descendants = $root->descendants()->findAll() ; // Выбираем ВСЕХ потомков категории
@@ -46,11 +47,17 @@ class CategoryController extends Controller
                 ),
             )) ;
 
-            $this->render('index', array('model'=>$model, 'dataProvider'=>$dataProvider)) ;
+            $this->render('index', array('model'=>$model, 'dataProvider'=>$dataProvider, 'bread_array'=>$bread_array)) ;
             Yii::app()->end() ; // ??????
 
         } else {
             // находимся в корне
+           /* $bread_array[] = array(
+                'title'=> '<strong>Главный каталог</strong>',
+                'id'=>'',
+            ) ;*/
+
+
             $model = Category::model()->roots()->findAll() ;
             $this->render('index', array('model'=>$model));
         }

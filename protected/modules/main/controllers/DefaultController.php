@@ -14,6 +14,7 @@ class DefaultController extends Controller
         if(isset($_GET['cid'])) {
             // находимся в какой то категории
             $root = Category::model()->loadModel($_GET['cid']) ;
+            $bread_array = Category::model()->getBreadcrumbs($root) ;
             $catalog_menu = $root->children()->findAll() ; // список подкатегорий в текущей категории
 
             $descendants = $root->descendants()->findAll() ; // Выбираем ВСЕХ потомков категории
@@ -66,6 +67,6 @@ class DefaultController extends Controller
             CClientScript::POS_READY
         ) ;
 
-        $this->render('index', array('catalog_menu'=>$catalog_menu, 'items'=>$dataProvider, 'pages'=>$pages));
+        $this->render('index', array('catalog_menu'=>$catalog_menu, 'items'=>$dataProvider, 'pages'=>$pages, 'bread_array'=>$bread_array));
     }
 }

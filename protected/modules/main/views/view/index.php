@@ -1,6 +1,39 @@
 <?php /* @var $this Controller */ ?>
 <div class="row-fluid">
     <div class="span9">
+
+        <ul class="breadcrumb">
+            <?php
+            if(count($bread_array)){
+                echo "<li>" ;
+                echo  CHtml::link('Главный каталог',array('/main/default'))."<span class='divider'>/</span>";
+                echo "</li>" ;
+
+                foreach($bread_array as $item) {
+                    $link = array('/main/default') ;
+                    if($item['id'] != '') {
+                        $link += array('cid'=>$item['id']) ;
+                    }
+
+                    if($model->category_id == $item['id']) {
+                        echo "<li>" ;
+                        echo  CHtml::link($item['title'],$link)."<span class='divider'>/</span>";
+                        echo "</li>" ;
+                        echo "<li class='active'>" ;
+                        echo $model->title;
+                        echo "</li>" ;
+
+                    } else {
+                        echo "<li>" ;
+                        echo  CHtml::link($item['title'],$link)."<span class='divider'>/</span>";
+                        echo "</li>" ;
+                    }
+                }
+            }
+            ?>
+        </ul>
+
+
         <div class="well">
             <h2><?php echo CHtml::encode($model->title) ;?></h2><hr>
             <p><strong>Цена: </strong><?php echo $model->price ;?> руб.</p>
