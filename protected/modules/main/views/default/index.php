@@ -1,8 +1,23 @@
 <?php
 /* @var $this DefaultController */
-$this->catalog_menu = $catalog_menu ;
 ?>
+<div class="span3">
+    <?php
+    //if(count($catalog_menu)) {
+        echo "<div class='catalog'>";
+        $this->widget('application.components.catalog_menu', array(
+            'data'=>$catalog_menu,
+        ));
+        echo "</div>";
 
+        if(Yii::app()->user->isAdmin()) {
+            echo CHtml::link("Admin", array("/admin/index"), array('class'=>'btn btn-danger btn-block')) ;
+        }
+    //}
+    ?>
+</div>
+
+<div class="span9">
 <ul class="breadcrumb">
     <?php
     if(count($bread_array)){
@@ -50,3 +65,5 @@ if(isset($pages)) {
     echo "</div>";
 }
 ?>
+
+</div>

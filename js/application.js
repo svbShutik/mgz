@@ -3,10 +3,10 @@ $('.tooltip_btn').tooltip({
 }) ;
 
 $('.product-list').tooltip({
-    selector: "a[rel=popover]"
+    selector: "a[tooltip=popover]"
 }) ;
 
-jQuery('body').on('click','a[rel=popover]',function(){
+jQuery('body').on('click','a[rel=buy_ajax]',function(){
     var ajaxid = this.id ;
     var url = '/index.php?r=main/buy&numiid='+ajaxid ;
     if($('#productCount').length) {

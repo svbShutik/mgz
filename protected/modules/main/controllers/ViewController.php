@@ -15,7 +15,7 @@ class ViewController extends Controller
                         placement: "left",
                         template: "<div class=\"popover\"><div class=\"arrow\"></div><div class=\"popover-inner\"><h3 class=\"popover-title\" style=\"display: none\"></h3><div class=\"popover-content\"><p></p></div></div></div>"
                     }) ;
-                    $("a[rel=popover]").click(function(e){
+                    $("a[tooltip=popover]").click(function(e){
                         $("#cart-block").popover("show") ;
                     });
 

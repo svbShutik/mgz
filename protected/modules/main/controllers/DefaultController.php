@@ -2,18 +2,20 @@
 
 class DefaultController extends Controller
 {
-    public $layout = '//layouts/column2' ;
+    public $layout = '//layouts/column1' ;
     //public $catalog_menu = array() ;
 
     public function actionIndex()
     {
-        $this->pageTitle = "SvbShop: штучки и ништячки :)" ;
+        $this->pageTitle = Yii::app()->name." - различные, полезные и не полезные ништячки и штучки :)" ;
         $this->pageDescription = "Интернет-магазин всяких нужных и ненужных штучек и ништячков!" ;
         $params = array() ;
 
         if(isset($_GET['cid'])) {
             // находимся в какой то категории
             $root = Category::model()->loadModel($_GET['cid']) ;
+            $this->pageTitle = Yii::app()->name.": ".$root->title ;
+
             $bread_array = Category::model()->getBreadcrumbs($root) ;
             $catalog_menu = $root->children()->findAll() ; // список подкатегорий в текущей категории
 
@@ -55,7 +57,7 @@ class DefaultController extends Controller
                         placement: "left",
                         template: "<div class=\"popover\"><div class=\"arrow\"></div><div class=\"popover-inner\"><h3 class=\"popover-title\" style=\"display: none\"></h3><div class=\"popover-content\"><p></p></div></div></div>"
                     }) ;
-                    $("a[rel=popover]").click(function(e){
+                    $("a[rel=buy_ajax]").click(function(e){
                         $("#cart-block").popover("show") ;
                     });
 

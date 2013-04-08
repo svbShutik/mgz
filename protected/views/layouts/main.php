@@ -32,8 +32,6 @@
                         ?>
                     </div>
 
-
-
                     <div class="span6" id="user-block">
                         <?php if (!Yii::app()->user->isGuest) {
                             echo CHtml::link("<i class='icon2-user'></i> Пользователь",array('/main/home'))."<br>" ;
@@ -44,7 +42,6 @@
                         }
                         ?>
                     </div>
-
 
                     <!--- END USER BLOCK -->
 
@@ -66,10 +63,6 @@
                 </div>
             </div>
         </div>
-        <?php
-        /*$this->widget('SearchBlock', array(
-        ));*/
-        ?>
 
         <?php echo $content; ?>
 

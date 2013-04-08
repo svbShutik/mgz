@@ -20,7 +20,7 @@
                         echo  CHtml::link($item['title'],$link)."<span class='divider'>/</span>";
                         echo "</li>" ;
                         echo "<li class='active'>" ;
-                        echo $model->title;
+                        echo "<strong>".$model->title."</strong>";
                         echo "</li>" ;
 
                     } else {
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="btn-group">
-                        <?php echo CHtml::link("В корзину", '#', array('id'=>$model->id, 'class'=>'btn btn-info', 'rel'=>'popover')) ;?>
+                        <?php echo CHtml::link("В корзину", '#', array('id'=>$model->id, 'class'=>'btn btn-info', 'rel'=>'buy_ajax', 'tooltip'=>'popover')) ;?>
                         <?php echo CHtml::link("Купить за 1 клик", '#callBack', array('id'=>$model->id, 'class'=>'btn btn-warning', "data-toggle"=>"modal")) ;?>
                     </div>
 

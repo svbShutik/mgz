@@ -4,7 +4,8 @@
     <?php
         //Картинка
         echo "<div class='img'>" ;
-            echo CHtml::image(ProductImg::model()->getFirstImage($item['id']), $item['title']) ;
+            $img = ProductImg::model()->getFirstImage($item['id']) ;
+            echo CHtml::link(CHtml::image($img, $item['title']),$img, array('rel'=>'lightbox', 'title'=>$item['title'])) ;
         echo "</div>" ;
     ?>
     </div>
@@ -20,9 +21,9 @@
         </div>
         <div class="span12 print_hide">
             <?php
-            echo CHtml::link("В корзину", array('#'), array('id'=>$item['id'], 'class'=>'btn btn-mini btn-info', 'rel'=>'popover', 'data-original-title'=>'Добавить товар в корзину', 'data-placement'=>'bottom')) ;
+            echo CHtml::link("В корзину", array('#'), array('id'=>$item['id'], 'class'=>'btn btn-mini btn-info', 'rel'=>'buy_ajax','tooltip'=>'popover', 'data-original-title'=>'Добавить товар в корзину', 'data-placement'=>'bottom')) ;
                 if(!Yii::app()->user->isGuest) {
-                    echo CHtml::link("<i class='icon2-bookmark-2'></i>", array('#'), array('class'=>'btn btn-mini btn-warning', 'rel'=>'popover', 'data-original-title'=>'Добавить товар в закладки', 'data-placement'=>'bottom')) ;
+                    echo CHtml::link("<i class='icon2-bookmark-2'></i>", array('#'), array('class'=>'btn btn-mini btn-warning', 'tooltip'=>'popover', 'data-original-title'=>'Добавить товар в закладки', 'data-placement'=>'bottom')) ;
                 }
             ?>
         </div>
