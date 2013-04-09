@@ -38,7 +38,6 @@
             <h2><?php echo CHtml::encode($model->title) ;?></h2><hr>
             <p><strong>Цена: </strong><?php echo $model->price ;?> руб.</p>
             <p><strong>Кол-во на складе: </strong><?php echo $model->quantity ;?> шт.</p>
-            <p><strong>Описание: </strong><?php echo $model->desc ;?></p>
 
             <div class="row-fluid">
                 <div class="span3">
@@ -86,6 +85,7 @@
 
         </div>
 
+        <?php echo $model->desc ;?>
 
         <?php if(count($attr)):?>
         <p><strong>Характеристки:</strong></p>
