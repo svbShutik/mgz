@@ -6,6 +6,17 @@ $('.product-list').tooltip({
     selector: "a[tooltip=popover]"
 }) ;
 
+$("#cart-block").popover({
+    content: "Товар добавлен в корзину!",
+    trigger: "none",
+    placement: "left",
+    template: "<div class=\"popover\"><div class=\"arrow\"></div><div class=\"popover-inner\"><h3 class=\"popover-title\" style=\"display: none\"></h3><div class=\"popover-content\"><p></p></div></div></div>"
+}) ;
+
+$("html").click(function() {
+    $("#cart-block").popover("hide");
+});
+
 jQuery('body').on('click','a[rel=buy_ajax]',function(){
     var ajaxid = this.id ;
     var url = '/index.php?r=main/buy&numiid='+ajaxid ;
@@ -14,11 +25,15 @@ jQuery('body').on('click','a[rel=buy_ajax]',function(){
         url = url+'&count='+pCount;
     }
     jQuery.ajax({
-        'type':'GET',
-        'data':{'update':true},
-        'url': url,
-        'cache':false,
-        'success':function(html){
+        type:'GET',
+        data:{'update':true},
+        url: url,
+        cache:false,
+        beforeSend:function(){
+            //$(this).text("Подождите ...") ;
+        },
+        success:function(html){
+            $("#cart-block").popover("show") ;
             $('#cartContainer').data('refresh', true) ; // флаг - можно обновить аяксом cartTips
             jQuery("#cart-count").html(html)
         }

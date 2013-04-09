@@ -48,7 +48,7 @@ class DefaultController extends Controller
         $pages = new CPagination($count);
         $pages->pageSize = 30;
 
-        Yii::app()->clientScript->registerScript(
+        /*Yii::app()->clientScript->registerScript(
             'ProductInCart',
             '
                     $("#cart-block").popover({
@@ -58,7 +58,7 @@ class DefaultController extends Controller
                         template: "<div class=\"popover\"><div class=\"arrow\"></div><div class=\"popover-inner\"><h3 class=\"popover-title\" style=\"display: none\"></h3><div class=\"popover-content\"><p></p></div></div></div>"
                     }) ;
                     $("a[rel=buy_ajax]").click(function(e){
-                        $("#cart-block").popover("show") ;
+
                     });
 
                     $("html").click(function() {
@@ -67,7 +67,7 @@ class DefaultController extends Controller
 
         ',
             CClientScript::POS_READY
-        ) ;
+        ) ;*/
 
         $this->render('index', array('catalog_menu'=>$catalog_menu, 'items'=>$dataProvider, 'pages'=>$pages, 'bread_array'=>$bread_array));
     }
