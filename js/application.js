@@ -2,7 +2,7 @@ $('.tooltip_btn').tooltip({
     selector: "a[rel=tooltip]"
 }) ;
 
-$('.product-list').tooltip({
+$(document).tooltip({
     selector: "a[tooltip=popover]"
 }) ;
 
@@ -30,9 +30,10 @@ jQuery('body').on('click','a[rel=buy_ajax]',function(){
         url: url,
         cache:false,
         beforeSend:function(){
-            //$(this).text("Подождите ...") ;
+            $("#"+ajaxid).text("Подождите ...") ;
         },
         success:function(html){
+            $("#"+ajaxid).text("В корзине :)") ;
             $("#cart-block").popover("show") ;
             $('#cartContainer').data('refresh', true) ; // флаг - можно обновить аяксом cartTips
             jQuery("#cart-count").html(html)
@@ -44,6 +45,7 @@ jQuery('body').on('click','a[rel=buy_ajax]',function(){
 $(function(){
     $('#cartContainer').data('refresh', true) ;
     $('#cartContainer').bind('mouseenter', function(){
+        $("#cart-block").popover("hide");
         show_cart_tips() ;
     }) ;
 
@@ -79,9 +81,6 @@ $(function(){
         } ;
     } ;
 
-
-
-
     //стрелка вверх :)
     $('#arrupmain').click(function(){
         $(window).scrollTop(0);
@@ -97,5 +96,15 @@ $(function(){
             $('#arrupmain').removeClass('showing');
         }
     });
+
+
+    //Отправляем только НЕ пустой поиск
+    $("#mainSearchForm").submit(function() {
+        if ($("#searchInput").val()=='') {
+            return false;
+        }
+            return true;
+    });
+
 });
 

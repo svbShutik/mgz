@@ -13,16 +13,14 @@
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
-
 <body>
 <div class="page">
     <div class="wrp">
         <div class="affix-top print_hide">
             <div class="top-padding"></div>
             <div class="row-fluid">
-                <div class="span2 logo">
+                <div class="span2">
                     <?php echo CHtml::link(CHtml::image('/img/logo.jpg','SvbShop - магазин очешуительных товаров по низкой цене'), array("/main/default"), array('id'=>'logo', 'class'=>'logo')) ; ?>
-
                 </div>
                 <div class="span4 offset6">
 
@@ -48,18 +46,32 @@
                 </div>
             </div>
             <div class="top-padding"></div>
+
             <div class="navbar">
                 <div class="navbar-inner">
-                    <ul class="nav">
-                        <li><?=CHtml::link('На главную', array('/main/default')) ; ?></li>
-                        <li class="divider-vertical"></li>
-                        <li><a href="#">Новые товары</a></li>
-                        <li><a href="#">Доставка</a></li>
-                        <li><a href="#">О нас</a></li>
-                    </ul>
+                    <div class="container">
 
-                    <?php $this->widget('SearchBlock'); ?>
+                        <?php echo CHtml::link('SvbShop', array('/main/default'), array('class'=>'brand'));?>
 
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+
+                        <div class="nav-collapse">
+                            <ul class="nav">
+                                <li class="divider-vertical"></li>
+                                <li><a href="#">Новые товары</a></li>
+                                <li><a href="#">Доставка</a></li>
+                                <li><a href="#">О нас</a></li>
+                            </ul>
+
+                            <?php $this->widget('SearchBlock'); ?>
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
         </div>

@@ -192,13 +192,13 @@ MAIN MODULE
     font-size: 14px;
     color: #4A4A4A;
     font-weight: bold;
-    margin: 15px 0 0 5px;
+    /*margin: 15px 0 0 5px;*/
 }
 
 .product-list .span6 .price {
     color: #E27C0E;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .delete a {

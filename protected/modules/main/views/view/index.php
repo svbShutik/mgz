@@ -33,7 +33,6 @@
             ?>
         </ul>
 
-
         <div class="well">
             <h2><?php echo CHtml::encode($model->title) ;?></h2><hr>
             <p><strong>Цена: </strong><?php echo $model->price ;?> руб.</p>
@@ -127,7 +126,5 @@
         }
         ?>
     </div>
-
-
 
 </div>

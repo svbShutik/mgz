@@ -9,7 +9,7 @@
         <?php echo CHtml::link('Моя корзина',array('/main/cart'), array('id'=>'cartLink'));?>
     </div>
 
-    <div class="span12">
+    <div class="span12" style="margin-left: 0px;">
         <div id="cart-count">
             <strong>
                 <?php

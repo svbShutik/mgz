@@ -14,12 +14,12 @@
         <div class="span12">
             <?php echo CHtml::link($item['title'], array('/main/view', 'numiid'=>$item['id']), array('class'=>'name'))."<br>" ; ?>
         </div>
-        <div class="span12">
+        <div class="span12" style="margin-left: 0px;">
             <?php
                 echo "<div class='price'>".$item['price']." руб.</div>" ;
             ?>
         </div>
-        <div class="span12 print_hide">
+        <div class="span12 print_hide" style="margin-left: 0px;">
             <?php
             echo CHtml::link("В корзину", array('#'), array('id'=>$item['id'], 'class'=>'btn btn-mini btn-info', 'rel'=>'buy_ajax','tooltip'=>'popover', 'data-original-title'=>'Добавить товар в корзину', 'data-placement'=>'bottom')) ;
                 if(!Yii::app()->user->isGuest) {
