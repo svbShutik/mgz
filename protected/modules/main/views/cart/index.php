@@ -71,9 +71,37 @@ if(isset($data)) {
     echo "</table>";
         echo "<div class='alert alert-info'>Общая стоимость, без учета доставки: <strong>".Yii::app()->shoppingCart->getCost()." руб.</strong></div>" ;
     echo "</div>" ;
-    echo CHtml::link("<i class='icon2-phone'></i>Купить за 1 клик", '#', array("class"=>"btn btn-warning", "rel"=>"buy1click")) ;
 }
 ?>
+<?php echo CHtml::link("<i class='icon2-phone'></i>Купить за 1 клик", '#callBack', array('class'=>'btn btn-warning', "data-toggle"=>"modal")) ;?>
+
+
+<div class="modal fade" id="callBack" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 id="myModalLabel">Обратный звонок</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row-fluid">
+            <div class="span4">
+                <?php echo CHtml::image("/img/callBack.jpg", "Обратный звонок", array('style'=>'width: 350px;')) ;?>
+            </div>
+            <div class="span8">
+                <p>Пожалуйста, укажите Ваш контактный номер телефона, и мы свяжемся с Вами в ближайшее время:</p>
+                <?php echo CHtml::textField('phoneNumber', '', array('class'=>'span6','id'=>'phoneNumber', 'placeholder'=>'Ваш номер телефона')) ;?>
+                <small><p class="muted">Например: +7 924 000 0000</p></small>
+                <p>Также можете указать, в какое время удобнее позвонить Вам (желательно указывать московское время):</p>
+                <?php echo CHtml::textField('callTIme', '', array('class'=>'span6','id'=>'callTime', 'placeholder'=>'Как можно раньше :)')) ;?>
+                <small><p class="muted">Например: с 9 до 20 по МСК</p></small>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
+        <button class="btn btn-info" id="buy1click">Жду звонка :)</button>
+    </div>
+</div>
+
 <?php if(Yii::app()->shoppingCart->getItemsCount()):?>
 <div class="pull-right">
     <?php echo CHtml::link("<i class='icon2-cart-2'></i>Оформить заказ", array('/main/cart/createorder'), array('class'=>'btn btn-success')) ; ?>

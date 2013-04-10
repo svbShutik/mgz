@@ -31,8 +31,22 @@ class BuyController extends Controller
             if(isset($_POST['callTime'])) {
                 $model->call_time = $_POST['callTime'] ;
             }
+            if(is_numeric($_POST['buyItems'])){
+                //$model->items = $_POST['buyItems'] ;
+                $model->items = serialize(array('id'=>$_POST['buyItems'],'count'=>'1')) ;
+            } else {
+                $data = Yii::app()->shoppingCart->getPositions() ;
+                $product_list = array() ;
+                foreach($data as $position) {
+                    $product_list[]=array(
+                        'id'=>$position->id,
+                        'count'=>$position->getQuantity(),
+                    ) ;
+                }
+                $model->items = serialize($product_list) ;
+            }
             $model->create_time = time() ;
-            $model->items = $_POST['buyItems'] ;
+
             if($model->save()) {
                 // чего возвращать
             }

@@ -64,8 +64,51 @@ class CartController extends Controller
             Yii::app()->user->setFlash('emptyCart', "Корзина пустая!") ;
             $this->render('index') ;
         } else {
-            Cookie::remove('order') ;
             $data = Yii::app()->shoppingCart->getPositions() ;
+/*            $product_list = array() ;
+            foreach($data as $position) {
+                $product_list[]=array(
+                    'id'=>$position->id,
+                    'count'=>$position->getQuantity(),
+                ) ;
+            }*/
+
+            Yii::app()->clientScript->registerScript(
+                'ProductInCart',
+                '
+                    $("#buy1click").click(function(){
+                        if(!$("#phoneNumber").val().length) {
+                            if(!$("#delete_msg").length)
+                                $("#phoneNumber").after("<p class=\"text-error\" id=\"delete_msg\"><small>Введите номер телефона</small></p>") ;
+                        } else {
+                            if($("#delete_msg").length) {
+                                $("#delete_msg").remove() ;
+                            }
+
+                            $.ajax({
+                                url: "'.$this->createUrl("/main/buy/buy1click").'",
+                                type: "POST",
+                                data: {
+                                    phoneNumber: $("#phoneNumber").val(),
+                                    callTime: $("#callTime").val(),
+                                    buyItems: "cart",
+                                },
+                                beforeSend: function(){
+                                    $("#phoneNumber").after("<p class=\"text-success\" id=\"success_msg\">Секундушку, записываем Вас в очередь :)</p>") ;
+                                },
+                                success: function(){
+                                    $("#success_msg").remove() ;
+                                    $("#callBack").modal("hide") ;
+                                    alertify.success("<i class=\"icon2-smiley\"></i> В ближайшее время с Вами свяжется наш менеджер для уточнения заказа!", 0);
+                                }
+                            }) ;
+                        }
+                    }) ;
+        ',
+                CClientScript::POS_READY
+            ) ;
+
+            Cookie::remove('order') ;
             $this->render('index', array('data'=>$data)) ;
         }
     }
