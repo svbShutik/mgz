@@ -44,7 +44,7 @@ class ViewController extends Controller
                                 data: {
                                     phoneNumber: $("#phoneNumber").val(),
                                     callTime: $("#callTime").val(),
-                                    buyItems: '.$model-id.',
+                                    buyItems: '.$model->id.',
                                 },
                                 beforeSend: function(){
                                     $("#phoneNumber").after("<p class=\"text-success\" id=\"success_msg\">Секундушку, записываем Вас в очередь :)</p>") ;

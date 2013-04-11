@@ -201,11 +201,6 @@ MAIN MODULE
     font-size: 13px;
 }
 
-.delete a {
-    font-size: 18px;
-    color: #cd0a0a;
-}
-
 #arrupmain {
     background: url("/img/arrupmain.png") no-repeat scroll center 6px #E27C0E;
     border-radius: 5px 5px 5px 5px;

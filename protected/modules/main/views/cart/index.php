@@ -59,9 +59,7 @@ if(isset($data)) {
             echo "</td>";
 
             echo "<td>";
-            echo "<div class='delete'>";
-                echo CHtml::link("<i class='icon2-remove'></i>", array("/main/cart/delete", "numiid"=>$position->id), array('tooltip'=>'popover', 'data-original-title'=>'Удалить товар', 'data-placement'=>'bottom'));
-            echo "</div>" ;
+                echo CHtml::link("<i class='icon2-remove'></i>", array("/main/cart/delete", "numiid"=>$position->id), array('tooltip'=>'popover', 'data-original-title'=>'Удалить товар', 'data-placement'=>'bottom', 'class'=>'btn btn-danger'));
             echo "</td>";
 
             echo "</tr>" ;
