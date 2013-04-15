@@ -50,13 +50,6 @@ class CartController extends Controller
         return $json ;
     }
 
-
-
-
-
-
-
-
     public function actionIndex()
     {
         $this->pageTitle = Yii::app()->name.": Корзина товаров" ;
@@ -65,13 +58,6 @@ class CartController extends Controller
             $this->render('index') ;
         } else {
             $data = Yii::app()->shoppingCart->getPositions() ;
-/*            $product_list = array() ;
-            foreach($data as $position) {
-                $product_list[]=array(
-                    'id'=>$position->id,
-                    'count'=>$position->getQuantity(),
-                ) ;
-            }*/
 
             Yii::app()->clientScript->registerScript(
                 'ProductInCart',
@@ -115,26 +101,43 @@ class CartController extends Controller
 
     public function actionCreateorder(){
         if(Yii::app()->user->isGuest) {
-            $this->redirect(array('/main/cart/guestorder')) ;
+            $this->redirect(array('/main/cart/choise')) ;
         } else {
             $this->redirect(array('/main/cart/userorder')) ;
         }
     }
 
-    public function actionGuestorder() {
-   /*     $model = new GuestOrder() ;
+    public function actionChoise() {
+        $this->pageTitle = Yii::app()->name.": Выбор" ;
+        if(!Yii::app()->user->isGuest) {
+            $this->redirect(array('/main/cart/createorder')) ;
+        }
+        $this->render('choise') ;
+    }
 
-        if(isset($_POST['GuestOrder']))
+    public function actionGuestorder() {
+        $this->pageTitle = Yii::app()->name.": Оформление заказа" ;
+
+        $model=new Guest();
+
+        // uncomment the following code to enable ajax-based validation
+
+        if(isset($_POST['ajax']) && $_POST['ajax']==='guest-form-form')
         {
-            $model->attributes=$_POST['GuestOrder'];
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+
+        if(isset($_POST['Guest']))
+        {
+            $model->attributes=$_POST['Guest'];
             if($model->validate())
             {
                 // form inputs are valid, do something here
                 return;
             }
         }
-
-        $this->render('guest_order', array('model'=>$model)) ;*/
+        $this->render('guest_order', array('model'=>$model)) ;
     }
 
 

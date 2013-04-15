@@ -12,7 +12,6 @@
     echo "<p>".CHtml::link('Список атрибутов', array('/admin/attribute'), array('class'=>'btn'))."</p>" ;
     echo "<p>".CHtml::link('Значения атрибутов', array('/admin/attributevalue'), array('class'=>'btn'))."</p>" ;
     echo "<p>".CHtml::link('Вид доставки', array('/admin/delivery'), array('class'=>'btn'))."</p>" ;
-    echo "<p>".CHtml::link('Список заказов', array('/admin/orders'), array('class'=>'btn btn-success'))."</p>" ;
     echo "<p>".CHtml::link('Запросы на звонок', array('/admin/calluser'), array('class'=>'btn btn-success'))."</p>" ;
 // <a href="http://corp.mamba.ru/test/promo.phtml"><img border="0" src="http://corp.mamba.ru/test/widget.phtml?id=81227" /></a>
 ?>

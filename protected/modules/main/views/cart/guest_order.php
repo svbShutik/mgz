@@ -6,6 +6,6 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
-
-</div><!-- form -->
+<?php
+$this->renderPartial('guest_form', array('model'=>$model)) ;
+?>

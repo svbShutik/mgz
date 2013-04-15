@@ -6,7 +6,7 @@ class HomeController extends Controller
 	{
         $user_id = $this->loadUser() ;
 
-        $sql = "SELECT * FROM orders WHERE user_id=".$user_id ;
+        /*$sql = "SELECT * FROM orders WHERE user_id=".$user_id ;
         $count = Yii::app()->db->createCommand("SELECT COUNT(*) FROM orders WHERE user_id=".$user_id)->queryScalar() ;
 
         $pages = new CPagination($count) ;
@@ -17,9 +17,9 @@ class HomeController extends Controller
             'pagination'=>array(
                 'pageSize'=>15,
             ),
-        )) ;
+        )) ;*/
 
-		$this->render('index', array('dataProvider'=>$order, 'pages'=>$pages));
+		$this->render('index');//,array('dataProvider'=>$order, 'pages'=>$pages));
 	}
 
     //Возвращает ID пользователя
