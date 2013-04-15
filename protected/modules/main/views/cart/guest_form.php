@@ -4,7 +4,7 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
+<div class="form-horizontal">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'guest-form-form',
@@ -13,22 +13,27 @@
 
 	<p class="note">Все поля обязательны для заполнения.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+        <?php
+            echo $form->errorSummary($model, null,null,array('class'=>'alert alert-error alert-block')); ?>
 
-
+    <div class="control-group">
 		<?php echo $form->labelEx($model,'fio'); ?>
 		<?php echo $form->textField($model,'fio'); ?>
-		<?php echo $form->error($model,'fio'); ?>
+    </div>
 
+    <div class="control-group">
 		<?php echo $form->labelEx($model,'phone'); ?>
 		<?php echo $form->textField($model,'phone'); ?>
-		<?php echo $form->error($model,'phone'); ?>
+    </div>
 
+    <div class="control-group">
 		<?php echo $form->labelEx($model,'adres'); ?>
 		<?php echo $form->textArea($model,'adres'); ?>
-		<?php echo $form->error($model,'adres'); ?>
+    </div>
 
-		<?php echo CHtml::submitButton('Submit'); ?>
+    <div class="control-group">
+		<?php echo CHtml::submitButton('Продолжить', array('class'=>'btn')); ?>
+    </div>
 
 <?php $this->endWidget(); ?>
 

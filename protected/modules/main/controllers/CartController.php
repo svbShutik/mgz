@@ -134,11 +134,10 @@ class CartController extends Controller
             if($model->validate())
             {
                 // form inputs are valid, do something here
-                return;
+                $this->render('guest_order', array('model'=>$model)) ;
             }
         }
         $this->render('guest_order', array('model'=>$model)) ;
     }
-
 
 }
