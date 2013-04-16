@@ -26,7 +26,7 @@ class Order extends CActiveRecord
 		return parent::model($className);
 	}
 
-	/**
+	/*
 	 * @return string the associated database table name
 	 */
 	public function tableName()
@@ -34,7 +34,7 @@ class Order extends CActiveRecord
 		return 'order';
 	}
 
-	/**
+	/*
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()
@@ -42,7 +42,7 @@ class Order extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('order_key, create_time, status, delivery, pay, done', 'required'),
+			array('order_key, create_time, delivery, status, pay, done', 'required'),
             array('user_id, guest_id', 'safe'),
 			array('order_key, user_id, guest_id, create_time, status, delivery, pay, done', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
@@ -51,7 +51,7 @@ class Order extends CActiveRecord
 		);
 	}
 
-	/**
+	/*
 	 * @return array relational rules.
 	 */
 	public function relations()

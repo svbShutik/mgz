@@ -14,7 +14,7 @@
 	<p class="note">Все поля обязательны для заполнения.</p>
 
         <?php
-            echo $form->errorSummary($model, null,null,array('class'=>'alert alert-error alert-block')); ?>
+            echo $form->errorSummary(array($model, $order), null,null,array('class'=>'alert alert-error alert-block')); ?>
 
     <div class="control-group">
 		<?php echo $form->labelEx($model,'fio'); ?>
@@ -28,8 +28,14 @@
 
     <div class="control-group">
 		<?php echo $form->labelEx($model,'adres'); ?>
-		<?php echo $form->textArea($model,'adres'); ?>
+		<?php echo $form->textArea($model,'adres', array('rows'=>'4', 'class'=>'input-xlarge')); ?>
     </div>
+
+    <label class="radio">
+        <?php echo $form->labelEx($order,'delivery'); ?>
+        <?php echo $form->radioButtonList($order,'delivery',CHtml::listData(Delivery::model()->findAll(),'id','title'), array('separator'=>'')) ?>
+    </label>
+
 
     <div class="control-group">
 		<?php echo CHtml::submitButton('Продолжить', array('class'=>'btn')); ?>
@@ -38,3 +44,6 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+
+

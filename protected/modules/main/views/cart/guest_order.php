@@ -7,5 +7,5 @@
 ?>
 
 <?php
-$this->renderPartial('guest_form', array('model'=>$model)) ;
+$this->renderPartial('guest_form', array('model'=>$model, 'order'=>$order)) ;
 ?>

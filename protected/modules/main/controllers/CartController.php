@@ -118,26 +118,38 @@ class CartController extends Controller
     public function actionGuestorder() {
         $this->pageTitle = Yii::app()->name.": Оформление заказа" ;
 
-        $model=new Guest();
+        $model = new Guest() ;
+        $order = new Order() ;
+        $order->order_key = '123456666' ;
+        $order->create_time = time() ;
+        $order->done = '0' ;
+        $order->pay = '0' ;
+        $order->status = '0' ;
 
         // uncomment the following code to enable ajax-based validation
 
         if(isset($_POST['ajax']) && $_POST['ajax']==='guest-form-form')
         {
-            echo CActiveForm::validate($model);
+            echo CActiveForm::validateTabular(array($model,$order));
             Yii::app()->end();
         }
 
-        if(isset($_POST['Guest']))
+        if(isset($_POST['Guest'], $_POST['Order']))
         {
-            $model->attributes=$_POST['Guest'];
-            if($model->validate())
+            $model->attributes=$_POST['Guest'] ;
+            $order->attributes=$_POST['Order'] ;
+
+            //валидация
+            $valid = $model->validate() ;
+            $valid = $order->validate() && $valid ;
+
+            if($valid)
             {
                 // form inputs are valid, do something here
-                $this->render('guest_order', array('model'=>$model)) ;
+                $this->redirect(array('/main/cart/guestorder')) ;
             }
         }
-        $this->render('guest_order', array('model'=>$model)) ;
+        $this->render('guest_order', array('model'=>$model, 'order'=>$order)) ;
     }
 
 }
