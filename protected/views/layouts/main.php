@@ -63,9 +63,17 @@
                             <ul class="nav">
                                 <li class="divider-vertical"></li>
                                 <li><a href="#">Новые товары</a></li>
-                                <li><a href="#">Доставка</a></li>
-                                <li><a href="#">О нас</a></li>
+                                <li class="dropdown">
+                                    <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Сервис<b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                                        <li><a href="#">Доставка</a></li>
+                                        <li><?php echo CHtml::link('Оплата заказов', array('/main/payment/index'));?></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">О нас</a></li>
+                                    </ul>
+                                </li>
                             </ul>
+
 
                             <?php $this->widget('SearchBlock'); ?>
                         </div>

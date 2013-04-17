@@ -1,10 +1,10 @@
 <legend>Информация о Вашем заказе:</legend>
 <?php
-    echo "Номер заказа: ".$order->order_key."<br>" ;
+/*    echo "Номер заказа: ".$order->order_key."<br>" ;
     echo "Сумма к оплате: ".$order->total_price." руб.<br>" ;
     $delivery = Delivery::model()->getDelivery($order->delivery) ;
     echo "Способ доставки: ".$delivery->title."<br>" ;
-    echo "Статус: ".Helper::getPaymentList($order->pay)."<br>" ;
+    echo "Статус: ".Helper::getPaymentList($order->pay)."<br>" ;*/
 ?>
 
 <div class="top-padding"></div>

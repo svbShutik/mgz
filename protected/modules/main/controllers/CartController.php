@@ -120,7 +120,7 @@ class CartController extends Controller
 
         $model = new Guest() ;
         $order = new Order() ;
-        $order->order_key = '123456666' ;
+        $order->order_key = '0' ;
         $order->create_time = time() ;
         $order->done = '0' ;
         $order->pay = '0' ;
@@ -145,8 +145,34 @@ class CartController extends Controller
 
             if($valid)
             {
+                //Все чики-пуки, записываем заказ в БД
+                $model->save(false) ; //инфо заказчика
+
+                $order->order_key = $model->id.date('ms',time()).rand(1,99);
+
+                $delivery = Delivery::model()->getDelivery($order->delivery) ;
+                $order->pay = Yii::app()->shoppingCart->getCost() + $delivery->price ;
+
+                $order->guest_id = $model->id ;
+
+                $order->save(false) ;
+
+
+                //заносим в БД список заказанных товаров
+                foreach(Yii::app()->shoppingCart->getPositions() as $position) {
+                    $order_item = new OrderItems() ;
+                    $order_item->order_id = $order->id ;
+                    $order_item->product_id = $position->id ;
+                    $order_item->count = $position->getQuantity() ;
+                    $order_item->price = $position->getPrice() ;
+                    $order_item->save() ;
+                }
+
+                //Очищаем корзину после создания заказа
+                Yii::app()->shoppingCart->clear() ;
+
                 // form inputs are valid, do something here
-                $this->redirect(array('/main/cart/guestorder')) ;
+                $this->redirect(array('/main/payment/index', 'order'=>$order->order_key)) ;
             }
         }
         $this->render('guest_order', array('model'=>$model, 'order'=>$order)) ;

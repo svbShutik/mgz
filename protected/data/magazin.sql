@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 15 2013 г., 16:43
+-- Время создания: Апр 17 2013 г., 16:46
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -236,6 +236,7 @@ CREATE TABLE IF NOT EXISTS `delivery` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(170) NOT NULL,
   `desc` text NOT NULL,
+  `price` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
@@ -243,10 +244,10 @@ CREATE TABLE IF NOT EXISTS `delivery` (
 -- Дамп данных таблицы `delivery`
 --
 
-INSERT INTO `delivery` (`id`, `title`, `desc`) VALUES
-(1, 'Почта РФ', 'бла бла бла .. почта РФ'),
-(2, 'EMS', 'тут какое то описание про доставку и т.д. и т.п.'),
-(3, 'Самовывоз', 'ышвоах089гц 04гое0укг=0й34г фыашволпэзвачп олфъ0у9п=ф9укгпф9ук пф90ывп0амяхчсщзмчс 0- 0- 98- 908 -9 \\-0 9\\-яч0ь9 =с0шплхщуфшоге=30егй=3480егпаи');
+INSERT INTO `delivery` (`id`, `title`, `desc`, `price`) VALUES
+(1, 'Почта РФ', 'бла бла бла .. почта РФ', 350),
+(2, 'EMS', 'тут какое то описание про доставку и т.д. и т.п.', 570),
+(3, 'Самовывоз', 'ышвоах089гц 04гое0укг=0й34г фыашволпэзвачп олфъ0у9п=ф9укгпф9ук пф90ывп0амяхчсщзмчс 0- 0- 98- 908 -9 \\-0 9\\-яч0ь9 =с0шплхщуфшоге=30егй=3480егпаи', 0);
 
 -- --------------------------------------------------------
 
@@ -289,7 +290,15 @@ CREATE TABLE IF NOT EXISTS `guest` (
   `adres` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `guest`
+--
+
+INSERT INTO `guest` (`id`, `fio`, `phone`, `adres`) VALUES
+(1, '43623f625g 425 45747624', '5345555', '3b65tygfg'),
+(2, '6g6w45f645', '645645645', '6456456456');
 
 -- --------------------------------------------------------
 
@@ -299,7 +308,7 @@ CREATE TABLE IF NOT EXISTS `guest` (
 
 CREATE TABLE IF NOT EXISTS `order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `order_key` int(11) NOT NULL,
+  `order_key` int(17) NOT NULL,
   `user_id` int(11) NOT NULL,
   `guest_id` int(11) NOT NULL,
   `create_time` int(11) NOT NULL,
@@ -309,7 +318,15 @@ CREATE TABLE IF NOT EXISTS `order` (
   `done` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `order_key` (`order_key`,`user_id`,`guest_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `order`
+--
+
+INSERT INTO `order` (`id`, `order_key`, `user_id`, `guest_id`, `create_time`, `status`, `delivery`, `pay`, `done`) VALUES
+(1, 104167416, 0, 1, 1366176916, 0, 3, 70000, 0),
+(2, 2042687, 0, 2, 1366177046, 0, 1, 15850, 0);
 
 -- --------------------------------------------------------
 
@@ -324,7 +341,16 @@ CREATE TABLE IF NOT EXISTS `order_items` (
   `count` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Дамп данных таблицы `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `count`, `price`) VALUES
+(1, 1, 3, 1, 70000),
+(2, 2, 5, 1, 15000),
+(3, 2, 8, 1, 500);
 
 -- --------------------------------------------------------
 

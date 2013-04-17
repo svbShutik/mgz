@@ -38,7 +38,7 @@
 
 
     <div class="control-group">
-		<?php echo CHtml::submitButton('Продолжить', array('class'=>'btn')); ?>
+		<?php echo CHtml::submitButton('Продолжить', array('class'=>'btn btn-success')); ?>
     </div>
 
 <?php $this->endWidget(); ?>

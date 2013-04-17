@@ -7,6 +7,7 @@
  * @property integer $id
  * @property string $title
  * @property string $desc
+ * @property integer $price
  */
 class Delivery extends CActiveRecord
 {
@@ -36,11 +37,11 @@ class Delivery extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, desc', 'required'),
+			array('title, desc, price', 'required'),
 			array('title', 'length', 'max'=>170),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, desc', 'safe', 'on'=>'search'),
+			array('id, title, desc, price', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,8 +63,9 @@ class Delivery extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
-			'desc' => 'Desc',
+			'title' => 'Название',
+			'desc' => 'Описание',
+            'price'=>'Цена доставки',
 		);
 	}
 
@@ -81,6 +83,7 @@ class Delivery extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('desc',$this->desc,true);
+        $criteria->compare('price',$this->price);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
