@@ -19,7 +19,7 @@
                 <?php
                     $delivery = Delivery::model()->findAll() ;
                     foreach($delivery as $item){
-                        echo "<dt>".$item->title.":</dt>";
+                        echo "<dt>".$item->title." - стоимость ".$item->price." руб.:</dt>";
                         echo "<dd>".$item->desc."</dd>";
                     }
                 ?>

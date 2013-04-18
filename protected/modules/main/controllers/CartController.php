@@ -39,7 +39,7 @@ class CartController extends Controller
 
             foreach($data as $position) {
                 $html .= "<tr class='cartTipsItem'>
-                            <td>".CHtml::link(CHtml::image(ProductImg::model()->getFirstImage($position->id),$position->title,array('style'=>'width:70px;')), array('/main/view', 'numiid'=>$position->id))."</td><td>".$position->getQuantity()." шт.</td><td><strong>".$position->getSumPrice()." </strong>руб.</td>
+                            <td>".CHtml::link(CHtml::image(ProductImg::model()->getFirstImage($position->id),$position->title,array('style'=>'width:70px;','title'=>$position->title)), array('/main/view', 'numiid'=>$position->id))."</td><td>".$position->getQuantity()." шт.</td><td><strong>".$position->getSumPrice()." </strong>руб.</td>
                           </tr>" ;
             }
             $html .= "</table>\n </div>\n </div>\n </div>" ;
@@ -105,6 +105,10 @@ class CartController extends Controller
         } else {
             $this->redirect(array('/main/cart/userorder')) ;
         }
+    }
+
+    public function actionUserorder(){
+
     }
 
     public function actionChoise() {
