@@ -93,7 +93,7 @@
 </div>
 <div class="footer">
     <div class="footer_copy">
-        <p>&copy; Павел Петроf, 2013</p>
+        <p>&copy; Павел Петроf, <?php echo date('Y');?>г.</p>
     </div>
 </div>
 <!---
