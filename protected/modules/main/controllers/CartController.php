@@ -6,6 +6,15 @@ class CartController extends Controller
     //public $layout = '//layouts/column1' ;
 
 
+    //Генерация номера заказа
+    public function generateOrderKey($id) {
+        return $id.date('d',time()).date('ms',time()).rand(1,99);
+    }
+
+    public function TotalPrice($price, $delivery_id) {
+        $delivery = Delivery::model()->getDelivery($delivery_id) ;
+        return $price + $delivery->price ;
+    }
 
     public function actionClear() {
             Yii::app()->shoppingCart->clear() ;
@@ -108,7 +117,42 @@ class CartController extends Controller
     }
 
     public function actionUserorder(){
+        if(Yii::app()->shoppingCart->isEmpty()) {
+            $this->redirect(array('/main/default/index')) ;
+        }
+        $this->pageTitle = Yii::app()->name.": Оформление заказа" ;
+        $order = new Order() ;
+        $order->user_id = Yii::app()->user->getId() ;
+        $order->create_time = time() ;
+        $order->status = '0' ;
+        $order->done = '0' ;
+        $order->pay = '0' ;
+        $order->order_key = $this->generateOrderKey($order->user_id) ;
 
+        if(isset($_POST['Order'])) {
+            $order->attributes = $_POST['Order'] ;
+            if($order->validate()) {
+                $order->pay = $this->TotalPrice(Yii::app()->shoppingCart->getCost(), $order->delivery)  ;
+                $order->save() ;
+
+                //заносим в БД список заказанных товаров
+                foreach(Yii::app()->shoppingCart->getPositions() as $position) {
+                    $order_item = new OrderItems() ;
+                    $order_item->order_id = $order->id ;
+                    $order_item->product_id = $position->id ;
+                    $order_item->count = $position->getQuantity() ;
+                    $order_item->price = $position->getPrice() ;
+                    $order_item->save() ;
+                }
+
+                //Очищаем корзину после создания заказа
+                Yii::app()->shoppingCart->clear() ;
+
+                $this->redirect(array('/main/payment/index', 'order'=>$order->order_key)) ;
+            }
+        }
+
+        $this->render('userorder', array('order'=>$order)) ;
     }
 
     public function actionChoise() {
@@ -120,6 +164,9 @@ class CartController extends Controller
     }
 
     public function actionGuestorder() {
+        if(Yii::app()->shoppingCart->isEmpty()) {
+            $this->redirect(array('/main/default/index')) ;
+        }
         $this->pageTitle = Yii::app()->name.": Оформление заказа" ;
 
         $model = new Guest() ;
@@ -152,10 +199,9 @@ class CartController extends Controller
                 //Все чики-пуки, записываем заказ в БД
                 $model->save(false) ; //инфо заказчика
 
-                $order->order_key = $model->id.date('ms',time()).rand(1,99);
+                $order->order_key = $this->generateOrderKey($model->id) ;
 
-                $delivery = Delivery::model()->getDelivery($order->delivery) ;
-                $order->pay = Yii::app()->shoppingCart->getCost() + $delivery->price ;
+                $order->pay = $this->TotalPrice(Yii::app()->shoppingCart->getCost(), $order->delivery)  ;
 
                 $order->guest_id = $model->id ;
 
