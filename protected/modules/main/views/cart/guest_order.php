@@ -1,6 +1,6 @@
 <?php
 /* @var $this CartController */
-/* @var $model GuestOrder */
+/* @var $model Guest */
 /* @var $form CActiveForm */
 ?>
 

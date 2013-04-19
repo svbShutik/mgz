@@ -2,18 +2,26 @@
     <div class="row-fluid">
         <div class="span9">
             <h4>Список заказов:</h4>
+            <table class="table">
             <?php
-                if(count($dataProvider)) {
-                    $this->renderPartial('_item', array('items'=>$dataProvider), false, false) ;
-                }
+                //if(count($dataProvider)) {
+                    //$this->renderPartial('_item', array('orders'=>$orders), false, false) ;
+                //}
 
-
-                if(isset($pages)) {
-                    echo "<div class='pagination pagination-centered'>";
-                    $this->widget('CLinkPager', array('pages' => $pages, 'header'=>'', 'cssFile'=>false));
-                    echo "</div>";
-                }
+            $this->widget('zii.widgets.CListView', array(
+                'dataProvider'=>$orders,
+                'itemView'=>'_item',   // refers to the partial view named '_post'
+                'ajaxUpdate'=>false,
+                'emptyText'=>'Заказы отсутствуют',
+                'sorterHeader'=>'Сортировать по:',
+                'sortableAttributes'=>array(
+                    'number',
+                    'create_time',
+                    'price',
+                ),
+            ));
             ?>
+            </table>
 
         </div>
 
