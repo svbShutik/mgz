@@ -36,7 +36,11 @@
         <div class="well">
             <h2><?php echo CHtml::encode($model->title) ;?></h2><hr>
             <p><strong>Цена: </strong><?php echo $model->price ;?> руб.</p>
-            <p><strong>Кол-во на складе: </strong><?php echo $model->quantity ;?> шт.</p>
+            <p><strong>Надичие на складе: </strong><?php if($model->quantity){
+                echo "Есть" ;
+            } else {
+                echo "Нет" ;
+            } ;?></p>
 
             <div class="row-fluid">
                 <div class="span3">

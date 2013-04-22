@@ -6,12 +6,30 @@ class OrdersController extends Controller
 	{
         $orders = new CActiveDataProvider('Order',array(
             'pagination'=>array(
-                'pageSize'=>'50',
+                'pageSize'=>'75',
             ),
         )) ;
 
 		$this->render('index', array('orders'=>$orders));
 	}
+
+    public function actionView($id) {
+        $model = Order::model()->getOrder_key($id) ;
+
+        $param = array('model'=>$model) ;
+
+        if($model->user_id != 0) {
+            $user = User::model()->findByPk($model->user_id) ;
+            $param['user'] = $user ;
+        } else {
+            $guest = Guest::model()->findByPk($model->guest_id) ;
+            $param['guest'] = $guest ;
+        }
+
+
+        $this->render('view', $param) ;
+    }
+
 
 	// Uncomment the following methods and override them if needed
 	/*

@@ -106,4 +106,13 @@ class Order extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    public function getOrder_key($order_key) {
+        $model = $this->find('order_key=:ORDER_KEY', array(':ORDER_KEY'=>$order_key)) ;
+        if(!$model) {
+            throw new CHttpException(404, 'Заказа с таким номером не существует!') ;
+        }
+        return $model ;
+    }
+
 }

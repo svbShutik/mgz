@@ -25,7 +25,22 @@
                 <?php echo CHtml::link("Главная", array("/main/default"), array("class"=>"brand")) ;?>
                 <ul class="nav">
                     <li><?php echo CHtml::link("Gii", array("/gii")) ;?></li>
-                    <li><?php echo CHtml::link("Админка", array("/admin/index")) ;?></li>
+                    <li></li>
+                    <li class="dropdown">
+                        <?php echo CHtml::link("Админка<b class='caret'></b>", array("/admin/index"),array('class'=>'dropdown-toggle', 'data-toggle'=>'dropdown')) ;?>
+                        <ul class="dropdown-menu">
+                            <li><?php echo CHtml::link('Бренды', array('/admin/brand')) ;?></li>
+                            <li><?php echo CHtml::link('Тип продуктов', array('/admin/producttype')) ;?></li>
+                            <li><?php echo CHtml::link('Категории', array('/admin/category')) ;?></li>
+                            <li><?php echo CHtml::link('Продукты', array('/admin/product')) ;?></li>
+                            <li><?php echo CHtml::link('Группы атрибутов (Тип продуктов)', array('/admin/attributegroup/admin')) ;?></li>
+                            <li><?php echo CHtml::link('Список атрибутов', array('/admin/attribute')) ;?></li>
+                            <li><?php echo CHtml::link('Значения атрибутов', array('/admin/attributevalue')) ;?></li>
+                            <li><?php echo CHtml::link('Вид доставки', array('/admin/delivery')) ;?></li>
+                            <li><?php echo CHtml::link('Запросы на звонок', array('/admin/calluser')) ;?></li>
+                            <li><?php echo CHtml::link('ЗАКАЗЫ', array('/admin/orders')) ;?></li>
+                        </ul>
+                    </li>
                 </ul>
                 <div class="pull-right">
                     <?php
@@ -42,14 +57,7 @@
             </div>
         </div>
     </div>
-        <div class="row-fluid">
-            <div class="span2">
-                123
-            </div>
-            <div class="span10">
                 <?php echo $content; ?>
-            </div>
-        </div>
     </div>
 </div>
 <div class="footer">

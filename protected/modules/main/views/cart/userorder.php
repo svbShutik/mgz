@@ -40,7 +40,7 @@
     </div>
     <div class="span12">
         <div class="TotalPrice">
-            <p>Итого с доставкой:</p>
+            <p>Итого с доставкой: Выбирите способ доставки</p>
         </div>
     </div>
 </div>
