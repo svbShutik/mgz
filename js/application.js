@@ -6,6 +6,16 @@ $(document).tooltip({
     selector: "a[tooltip=popover]"
 }) ;
 
+$('a[tooltip=popover]').click(function(){
+    this.animate({
+        width: "70%",         // ширина станет 70%
+        opacity: 0.4,         // прозрачность будет 40%
+        marginLeft: "0.6in",  // отступ от левого края элемента станет равным 6 дюймам
+        fontSize: "3em",      // размер шрифта увеличится в 3 раза
+        borderWidth: "10px"   // толщина рамки станет 10 пикселей
+    }, 1500);
+}) ;
+
 $("#cart-block").popover({
     content: "Товар добавлен в корзину!",
     trigger: "none",
