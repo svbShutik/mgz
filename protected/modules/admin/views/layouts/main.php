@@ -27,7 +27,7 @@
                     <li><?php echo CHtml::link("Gii", array("/gii")) ;?></li>
                     <li></li>
                     <li class="dropdown">
-                        <?php echo CHtml::link("Админка<b class='caret'></b>", array("/admin/index"),array('class'=>'dropdown-toggle', 'data-toggle'=>'dropdown')) ;?>
+                        <?php echo CHtml::link("Админка<b class='caret'></b>", "#",array('class'=>'dropdown-toggle', 'data-toggle'=>'dropdown')) ;?>
                         <ul class="dropdown-menu">
                             <li><?php echo CHtml::link('Бренды', array('/admin/brand')) ;?></li>
                             <li><?php echo CHtml::link('Тип продуктов', array('/admin/producttype')) ;?></li>
