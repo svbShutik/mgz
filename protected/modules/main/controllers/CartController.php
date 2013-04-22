@@ -38,6 +38,17 @@ class CartController extends Controller
         }
     }
 
+
+    //Расчет доставки на странице выбора доставки
+    public function actionTotalPrice() {
+        if(Yii::app()->request->isAjaxRequest) {
+            if($_POST['Order']) {
+                echo "Итого с доставкой: ".$this->TotalPrice(Yii::app()->shoppingCart->getCost(), (int)$_POST['Order']['delivery'])." руб." ;
+            }
+        }
+    }
+
+
     //html разметка для всплывашки корзины
     protected function createCartTips($data) {
         $html ="" ;

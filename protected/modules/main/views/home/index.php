@@ -3,11 +3,26 @@
         <div class="span9">
             <h4>Список заказов:</h4>
             <table class="table">
-            <?php
-                //if(count($dataProvider)) {
-                    //$this->renderPartial('_item', array('orders'=>$orders), false, false) ;
-                //}
+                <thead>
+                    <tr>
+                        <th>
+                            Номер заказа
+                        </th>
+                        <th>
+                            Дата заказа
+                        </th>
+                        <th>
+                            Сумма к оплате
+                        </th>
+                        <th>
+                            Статус заказа
+                        </th>
+                        <th>
 
+                        </th>
+                    </tr>
+                </thead>
+            <?php
             $this->widget('zii.widgets.CListView', array(
                 'dataProvider'=>$orders,
                 'itemView'=>'_item',   // refers to the partial view named '_post'
@@ -22,7 +37,6 @@
             ));
             ?>
             </table>
-
         </div>
 
 

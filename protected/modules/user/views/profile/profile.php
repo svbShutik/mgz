@@ -5,6 +5,7 @@ $this->menu = array(
     //
     array('label'=>UserModule::t('Edit'), 'url'=>array('edit')),
     array('label'=>UserModule::t('Change password'), 'url'=>array('changepassword')),
+    array('label'=>'Личный кабинет', 'url'=>array('/main/home')),
     //array('label'=>UserModule::t('Logout'), 'url'=>array('/user/logout')),
 );
 

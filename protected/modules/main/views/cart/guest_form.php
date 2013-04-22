@@ -4,6 +4,7 @@
 /* @var $form CActiveForm */
 ?>
 
+<div class="span12">
 <div class="form-horizontal">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -33,7 +34,13 @@
 
     <label class="radio">
         <?php echo $form->labelEx($order,'delivery'); ?>
-        <?php echo $form->radioButtonList($order,'delivery',CHtml::listData(Delivery::model()->findAll(),'id','title'), array('separator'=>'')) ?>
+        <?php echo $form->radioButtonList($order,'delivery',CHtml::listData(Delivery::model()->findAll(),'id','title'), array('separator'=>'', 'ajax'=>array(
+            'type'=>'POST',
+            'url'=>$this->createUrl('/main/cart/totalprice'),
+            'success'=>' function(data) { $(\'.TotalPrice\').html(data) }',
+            ),
+        'return'=>true, // иначе не переключается radioButton
+        )) ; ?>
     </label>
 
 
@@ -44,6 +51,11 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+</div>
 
-
+<div class="span12">
+    <div class="TotalPrice">
+        <p>Итого с доставкой:</p>
+    </div>
+</div>
 
