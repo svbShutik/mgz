@@ -15,7 +15,6 @@ class OrdersController extends Controller
 
     public function actionView($id) {
         $model = Order::model()->getOrder_key($id) ;
-
         $param = array('model'=>$model) ;
 
         if($model->user_id != 0) {
@@ -26,6 +25,18 @@ class OrdersController extends Controller
             $param['guest'] = $guest ;
         }
 
+       /* //Список товаров в заказке
+        $order_items = new CActiveDataProvider('OrderItems', array(
+            'criteria'=>array(
+                'condition'=>'order_id='.$model->id,
+            ),
+            'pagination'=>array(
+                'pageSize'=>'25',
+            ),
+        )) ;
+
+        $param['order_items'] = $order_items ;
+       */
 
         $this->render('view', $param) ;
     }

@@ -1,8 +1,3 @@
-<?php
-/**
- * Created by JetBrains PhpStorm.
- * User: 1
- * Date: 22.04.13
- * Time: 16:59
- * To change this template use File | Settings | File Templates.
- */
+<p><strong></strong>ФИО: <?php echo $guest->fio ;?></p>
+<p>Телефон: <?php echo $guest->phone ;?></p>
+<p>Адрес: <?php echo $guest->adres ;?></p>
