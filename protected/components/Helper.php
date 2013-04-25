@@ -7,8 +7,8 @@ class Helper
     ) ;
 
     static public $payment_list = array(
-        '0'=>'<div class="red">Не оплачен</div>',
-        '1'=>'<div class="green"><strong>Оплачен</strong></div>',
+        '0'=>'Не оплачен',
+        '1'=>'Оплачен',
         '2'=>'Оплата при получении',
         '3'=>'Отменен',
         '4'=>'В обработке',

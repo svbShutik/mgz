@@ -278,6 +278,17 @@ MAIN MODULE
     color:#fff;
 }
 
+.loader2
+{
+    background: url("/img/ajax-loader.gif");
+    background-size: cover;
+    padding: 0px;
+    margin: 0px;
+    height: 20px;
+    text-indent: -10000px;
+    font-size: 0px;
+}
+
 .red {
     color: red;
     display: inline;

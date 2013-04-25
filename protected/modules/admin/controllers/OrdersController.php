@@ -14,6 +14,7 @@ class OrdersController extends Controller
 	}
 
     public function actionView($id) {
+        $this->pageTitle = Yii::app()->name.": Просмотр заказа" ;
         $model = Order::model()->getOrder_key($id) ;
         $param = array('model'=>$model) ;
 
@@ -25,20 +26,17 @@ class OrdersController extends Controller
             $param['guest'] = $guest ;
         }
 
-       /* //Список товаров в заказке
-        $order_items = new CActiveDataProvider('OrderItems', array(
-            'criteria'=>array(
-                'condition'=>'order_id='.$model->id,
-            ),
-            'pagination'=>array(
-                'pageSize'=>'25',
-            ),
-        )) ;
-
-        $param['order_items'] = $order_items ;
-       */
-
         $this->render('view', $param) ;
+    }
+
+    public function actionAjaxstatus() {
+        if(Yii::app()->request->isAjaxRequest) {
+            if(isset($_POST['order_id']) && isset($_POST['status'])){
+                $order = Order::model()->findByAttributes(array('id'=>$_POST['order_id'])) ;
+                $order->status = (int)$_POST['status'] ;
+                $order->save() ;
+            }
+        }
     }
 
 

@@ -25,9 +25,6 @@ class Cookie
             Yii::app()->request->cookies->remove($name) ;
             return true ;
         }
-
     }
-
 }
-
 ?>
