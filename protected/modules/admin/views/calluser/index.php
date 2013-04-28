@@ -1,3 +1,4 @@
+<legend>Список запросов на обратный звонок</legend>
 <?php
 /* @var $this CalluserController */
 

@@ -7,6 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 ?>
+<legend><?php echo CHtml::link('Список заказов', array('/admin/orders/index'));?></legend>
 
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(

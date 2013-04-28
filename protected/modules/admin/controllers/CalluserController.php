@@ -4,6 +4,7 @@ class CalluserController extends Controller
 {
 	public function actionIndex()
 	{
+        $this->pageTitle = Yii::app()->name.": Список запросов на обратный звонок" ;
         $dataProvider = new CActiveDataProvider('CallUser', array(
             'criteria'=>array(
                 'order'=>'create_time DESC',

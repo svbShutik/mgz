@@ -27,7 +27,7 @@ class CallUser extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'callUser';
+		return 'calluser';
 	}
 
 	/**

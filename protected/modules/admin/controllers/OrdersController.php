@@ -4,6 +4,7 @@ class OrdersController extends Controller
 {
 	public function actionIndex()
 	{
+        $this->pageTitle = Yii::app()->name.": Заказы" ;
         $orders = new CActiveDataProvider('Order',array(
             'pagination'=>array(
                 'pageSize'=>'75',

@@ -13,6 +13,7 @@ $admin = array(
     //((UserModule::isAdmin())
     array('label'=>UserModule::t('Manage Users'), 'url'=>array('/user/admin')),
     array('label'=>UserModule::t('List User'), 'url'=>array('/user')),
+    array('label'=>'АДМИНКА', 'url'=>array('/admin/orders/index')),
     /*((UserModule::isAdmin())
         ?array('label'=>'Редактирование ролей', 'url'=>array('/rights'))
         :array()),*/

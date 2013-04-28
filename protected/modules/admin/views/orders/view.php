@@ -1,4 +1,4 @@
-<legend>Просмотр заказа №<?php echo $model->order_key ;?></legend>
+<legend>Просмотр заказа №<?php echo $model->order_key ;?> <div class="pull-right"><?php echo CHtml::link('к списку заказов', array('/admin/orders/index'));?></div></legend>
 <div class="row-fluid">
 <div class="span6">
     <div class="well well-small">
