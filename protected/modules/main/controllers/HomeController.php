@@ -54,6 +54,17 @@ class HomeController extends Controller
 		$this->render('index', array('orders'=>$orders));
 	}
 
+    public function actionView($order_key) {
+        $user_id = $this->loadUser() ;
+        $order = Order::model()->getOrder_key($order_key) ;
+        if($order->user_id != $user_id) {
+            throw new CHttpException(404) ;
+        }
+
+        $this->render('view', array('order'=>$order)) ;
+    }
+
+
     //Возвращает ID пользователя
     public function loadUser() {
         if(Yii::app()->user->isGuest) {

@@ -1,6 +1,6 @@
 <tr>
 <?php
-    echo "<td>".$data->order_key."</td>";
+    echo "<td>".CHtml::link($data->order_key, array('/main/home/view', 'order_key'=>$data->order_key))."</td>";
     echo "<td>".date('d.m.Y',$data->create_time)."</td>";
     echo "<td>".$data->pay." руб.</td>";
     echo "<td>".Helper::getPaymentList($data->status)."</td>";
