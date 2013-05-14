@@ -115,4 +115,9 @@ class Order extends CActiveRecord
         return $model ;
     }
 
+    public function TotalPrice($price, $delivery_id) {
+        $delivery = Delivery::model()->getDelivery($delivery_id) ;
+        return $price + $delivery->price ;
+    }
+
 }

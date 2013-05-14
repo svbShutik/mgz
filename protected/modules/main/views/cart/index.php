@@ -69,10 +69,12 @@ if(isset($data)) {
     echo "</table>";
         echo "<div class='alert alert-info'>Общая стоимость, без учета доставки: <strong>".Yii::app()->shoppingCart->getCost()." руб.</strong></div>" ;
     echo "</div>" ;
-}
-?>
-<?php echo CHtml::link("<i class='icon2-phone'></i>Купить за 1 клик", '#callBack', array('class'=>'btn btn-warning', "data-toggle"=>"modal")) ;?>
 
+
+    echo CHtml::link("<i class='icon2-phone'></i>Купить за 1 клик", '#callBack', array('class'=>'btn btn-warning', "data-toggle"=>"modal")) ;
+}
+
+?>
 
 <div class="modal fade" id="callBack" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
     <div class="modal-header">

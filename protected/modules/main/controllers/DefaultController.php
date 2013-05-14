@@ -41,12 +41,12 @@ class DefaultController extends Controller
         $dataProvider = new CSqlDataProvider($sql, array(
             'totalItemCount'=>$count,
             'pagination'=>array(
-                'pageSize'=>30,
+                'pageSize'=>10,
             ),
         )) ;
 
         $pages = new CPagination($count);
-        $pages->pageSize = 30;
+        $pages->pageSize = 10;
 
         /*Yii::app()->clientScript->registerScript(
             'ProductInCart',

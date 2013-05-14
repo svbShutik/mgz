@@ -11,10 +11,7 @@ class CartController extends Controller
         return $id.date('d',time()).date('ms',time()).rand(1,99);
     }
 
-    public function TotalPrice($price, $delivery_id) {
-        $delivery = Delivery::model()->getDelivery($delivery_id) ;
-        return $price + $delivery->price ;
-    }
+
 
     public function actionClear() {
             Yii::app()->shoppingCart->clear() ;
@@ -43,7 +40,7 @@ class CartController extends Controller
     public function actionTotalPrice() {
         if(Yii::app()->request->isAjaxRequest) {
             if($_POST['Order']) {
-                echo "Итого с доставкой: ".$this->TotalPrice(Yii::app()->shoppingCart->getCost(), (int)$_POST['Order']['delivery'])." руб." ;
+                echo "Итого с доставкой: ".Order::model()->TotalPrice(Yii::app()->shoppingCart->getCost(), (int)$_POST['Order']['delivery'])." руб." ;
             }
         }
     }
@@ -143,7 +140,7 @@ class CartController extends Controller
         if(isset($_POST['Order'])) {
             $order->attributes = $_POST['Order'] ;
             if($order->validate()) {
-                $order->pay = $this->TotalPrice(Yii::app()->shoppingCart->getCost(), $order->delivery)  ;
+                $order->pay = Order::model()->TotalPrice(Yii::app()->shoppingCart->getCost(), $order->delivery)  ;
                 $order->save() ;
 
                 //заносим в БД список заказанных товаров
@@ -212,7 +209,7 @@ class CartController extends Controller
 
                 $order->order_key = $this->generateOrderKey($model->id) ;
 
-                $order->pay = $this->TotalPrice(Yii::app()->shoppingCart->getCost(), $order->delivery)  ;
+                $order->pay = Order::model()->TotalPrice(Yii::app()->shoppingCart->getCost(), $order->delivery)  ;
 
                 $order->guest_id = $model->id ;
 
